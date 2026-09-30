@@ -1,0 +1,2811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WILDWEB | Conservation of Wildlife</title>
+
+<style>
+
+/* ================================
+   BASIC SETTINGS
+================================ */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f2e9;
+    color:#24372b;
+    line-height:1.7;
+}
+
+section{
+    padding:80px 7%;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+.title{
+    text-align:center;
+    font-size:42px;
+    margin:8px 0 15px;
+}
+
+.smallTitle{
+    text-align:center;
+    color:#537c5d;
+    font-size:12px;
+    letter-spacing:4px;
+    font-weight:bold;
+}
+
+.intro{
+    max-width:750px;
+    margin:auto;
+    text-align:center;
+    color:#66736b;
+}
+
+
+/* ================================
+   NAVBAR
+================================ */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:14px 6%;
+
+    background:rgba(18,52,34,.95);
+
+    color:white;
+}
+
+.logo{
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+.navLinks{
+    display:flex;
+    gap:20px;
+}
+
+.navLinks a{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.navLinks a:hover{
+    color:#dfc879;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    color:white;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #9fc8c2,
+            #658d6d 55%,
+            #234d34
+        );
+}
+
+.sun{
+    position:absolute;
+
+    width:95px;
+    height:95px;
+
+    border-radius:50%;
+
+    background:#f0d47e;
+
+    top:14%;
+    right:13%;
+
+    box-shadow:0 0 70px rgba(240,212,126,.6);
+}
+
+.heroContent{
+    max-width:850px;
+    position:relative;
+    z-index:5;
+}
+
+.heroSmall{
+    font-size:12px;
+    letter-spacing:5px;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(60px,12vw,125px);
+    letter-spacing:12px;
+    line-height:1;
+    margin:15px 0;
+}
+
+.hero h2{
+    font-size:23px;
+    font-weight:normal;
+}
+
+.hero p{
+    max-width:700px;
+    margin:20px auto;
+    font-size:17px;
+}
+
+.mainButton{
+    border:none;
+    border-radius:40px;
+
+    padding:15px 28px;
+
+    background:#dfc879;
+    color:#173524;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.mainButton:hover{
+    transform:translateY(-4px);
+}
+
+.forest{
+    position:absolute;
+    bottom:-10px;
+    left:0;
+
+    width:100%;
+
+    font-size:90px;
+    white-space:nowrap;
+
+    opacity:.55;
+}
+
+
+/* ================================
+   INTRO
+================================ */
+
+.introSection{
+    background:#f5f2e9;
+}
+
+.introBox{
+    max-width:1050px;
+    margin:45px auto 0;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    background:white;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    box-shadow:0 18px 45px rgba(20,55,38,.12);
+}
+
+.introText{
+    padding:45px;
+}
+
+.introText h3{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.introText p{
+    margin-bottom:16px;
+}
+
+.introArt{
+    min-height:350px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:120px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c8ddc0,
+            #628c69
+        );
+}
+
+
+/* ================================
+   ECOSYSTEM
+================================ */
+
+.ecosystem{
+    background:#dfeadd;
+}
+
+.ecoGrid{
+    max-width:1100px;
+
+    margin:45px auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+}
+
+.ecoCard{
+    background:white;
+
+    padding:28px;
+
+    border-radius:23px;
+
+    transition:.3s;
+}
+
+.ecoCard:hover{
+    transform:translateY(-6px);
+}
+
+.ecoIcon{
+    font-size:45px;
+}
+
+.ecoCard h3{
+    font-size:22px;
+    margin:7px 0;
+}
+
+.ecoCard p{
+    color:#68746d;
+}
+
+
+/* ================================
+   FOOD WEB
+================================ */
+
+.foodWeb{
+    max-width:950px;
+
+    margin:35px auto 0;
+
+    background:white;
+
+    padding:32px;
+
+    border-radius:25px;
+}
+
+.foodWeb h3{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.foodRow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.foodThing{
+    padding:14px 20px;
+
+    background:#edf3e9;
+
+    border-radius:16px;
+
+    text-align:center;
+}
+
+.arrow{
+    font-size:24px;
+    color:#557b5d;
+}
+
+
+/* ================================
+   SPECIES
+================================ */
+
+.wildlife{
+    background:#f8f5ed;
+}
+
+.animalGrid{
+    max-width:1100px;
+
+    margin:45px auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:28px;
+}
+
+.animalCard{
+    background:white;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 14px 35px rgba(20,55,38,.1);
+}
+
+.animalPicture{
+    height:230px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:125px;
+}
+
+.tiger{
+    background:linear-gradient(135deg,#dfc37c,#7c8960);
+}
+
+.deer{
+    background:linear-gradient(135deg,#ccdcbc,#738a76);
+}
+
+.butterfly{
+    background:linear-gradient(135deg,#c7dfdb,#819e97);
+}
+
+.bear{
+    background:linear-gradient(135deg,#c9c5ad,#747866);
+}
+
+.animalInfo{
+    padding:28px;
+}
+
+.animalInfo h3{
+    font-size:27px;
+}
+
+.scientific{
+    color:#537c5d;
+    font-style:italic;
+    font-size:14px;
+}
+
+.animalInfo p{
+    margin-top:10px;
+}
+
+.openButton{
+    margin-top:20px;
+
+    border:none;
+    border-radius:30px;
+
+    padding:11px 18px;
+
+    background:#183d29;
+    color:white;
+}
+
+.details{
+    display:none;
+
+    margin-top:22px;
+
+    padding:20px;
+
+    background:#edf3e9;
+
+    border-radius:18px;
+}
+
+.details h4{
+    color:#416b4d;
+    margin-top:12px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:15px;
+}
+
+.stat{
+    background:white;
+    padding:12px;
+    border-radius:12px;
+}
+
+.stat b{
+    display:block;
+    color:#537c5d;
+}
+
+
+/* ================================
+   QUICK FACTS
+================================ */
+
+.facts{
+    background:#e7eee3;
+}
+
+.factGrid{
+    max-width:1050px;
+
+    margin:45px auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+}
+
+.fact{
+    background:white;
+
+    padding:28px;
+
+    border-radius:22px;
+}
+
+.factNumber{
+    font-size:36px;
+    font-weight:bold;
+    color:#557f5e;
+}
+
+.fact h3{
+    margin:8px 0;
+}
+
+
+/* ================================
+   HIMALAYAS
+================================ */
+
+.himalaya{
+    min-height:650px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            160deg,
+            #a8ced0,
+            #66818a 55%,
+            #253e46
+        );
+}
+
+.mountains{
+    position:absolute;
+    bottom:-50px;
+    left:0;
+
+    width:100%;
+    height:55%;
+
+    background:#536d71;
+
+    clip-path:polygon(
+        0 100%,
+        15% 50%,
+        31% 72%,
+        48% 12%,
+        63% 68%,
+        81% 29%,
+        100% 67%,
+        100% 100%
+    );
+}
+
+.himalayaBox{
+    max-width:800px;
+
+    position:relative;
+    z-index:5;
+
+    padding:40px;
+
+    border-radius:27px;
+
+    background:rgba(13,42,50,.72);
+}
+
+.himalayaBox h2{
+    font-size:40px;
+    margin:10px 0;
+}
+
+.mountainFacts{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+    margin-top:25px;
+}
+
+.mountainFact{
+    padding:15px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.1);
+}
+
+.mountainFact b{
+    display:block;
+    color:#dfc879;
+    font-size:23px;
+}
+
+
+/* ================================
+   THREATS
+================================ */
+
+.threats{
+    background:#f5f2e9;
+}
+
+.threatGrid{
+    max-width:1050px;
+
+    margin:45px auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+}
+
+.threat{
+    background:white;
+
+    padding:28px;
+
+    border-radius:22px;
+}
+
+.threatIcon{
+    font-size:38px;
+}
+
+.threat h3{
+    margin:8px 0;
+}
+
+
+/* ================================
+   CONSERVATION
+================================ */
+
+.conservation{
+    background:#e2edde;
+}
+
+.conservationGrid{
+    max-width:1100px;
+
+    margin:45px auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+}
+
+.conservationCard{
+    background:white;
+
+    padding:25px;
+
+    border-radius:21px;
+}
+
+.conservationCard span{
+    font-size:38px;
+}
+
+.conservationCard h3{
+    margin:8px 0;
+}
+
+
+/* ================================
+   INVESTIGATION
+================================ */
+
+.investigation{
+    background:#dbe7d8;
+}
+
+.lab{
+    max-width:950px;
+
+    margin:40px auto 0;
+
+    padding:35px;
+
+    background:white;
+
+    border-radius:26px;
+}
+
+.labButtons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin:25px 0;
+}
+
+.labButtons button{
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:25px;
+
+    background:#183d29;
+    color:white;
+}
+
+.result{
+    min-height:200px;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    background:#edf3e9;
+}
+
+
+/* ================================
+   QUIZ
+================================ */
+
+.quiz{
+    background:#d1e0cf;
+}
+
+.quizBox{
+    max-width:750px;
+
+    margin:40px auto;
+
+    padding:32px;
+
+    background:white;
+
+    border-radius:25px;
+}
+
+.option{
+    width:100%;
+
+    border:none;
+
+    margin-top:10px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:#edf2e9;
+
+    text-align:left;
+}
+
+.option:hover{
+    background:#dce8d7;
+}
+
+.quizResult{
+    margin-top:20px;
+
+    font-weight:bold;
+
+    min-height:30px;
+}
+
+
+/* ================================
+   END
+================================ */
+
+.final{
+    background:#102c1d;
+
+    color:white;
+
+    text-align:center;
+
+    padding:100px 7%;
+}
+
+.final h2{
+    max-width:850px;
+
+    margin:auto;
+
+    font-size:45px;
+}
+
+.final p{
+    max-width:700px;
+
+    margin:20px auto;
+
+    color:#ccd9cf;
+}
+
+.finalQuote{
+    color:#dfc879;
+
+    font-size:20px;
+
+    font-weight:bold;
+}
+
+footer{
+    background:#071a10;
+
+    color:white;
+
+    text-align:center;
+
+    padding:40px 20px;
+}
+
+footer p{
+    color:#91a49a;
+
+    font-size:13px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:850px){
+
+    .navLinks{
+        display:none;
+    }
+
+    .introBox{
+        grid-template-columns:1fr;
+    }
+
+    .ecoGrid,
+    .factGrid,
+    .conservationGrid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .animalGrid,
+    .threatGrid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:550px){
+
+    section{
+        padding:65px 5%;
+    }
+
+    .title{
+        font-size:32px;
+    }
+
+    .hero h1{
+        font-size:50px;
+        letter-spacing:7px;
+    }
+
+    .ecoGrid,
+    .factGrid,
+    .conservationGrid{
+        grid-template-columns:1fr;
+    }
+
+    .mountainFacts{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     NAVIGATION
+================================ -->
+
+<nav>
+
+    <div class="logo">
+        🌿 WILDWEB
+    </div>
+
+    <div class="navLinks">
+
+        <a href="#about">About</a>
+
+        <a href="#ecosystem">Ecosystem</a>
+
+        <a href="#wildlife">Wildlife</a>
+
+        <a href="#facts">Facts</a>
+
+        <a href="#investigation">Investigation</a>
+
+        <a href="#quiz">Quiz</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<section class="hero">
+
+    <div class="sun"></div>
+
+    <div class="heroContent">
+
+        <div class="heroSmall">
+            CLASS 8 BIOLOGY PROJECT
+        </div>
+
+        <h1>
+            WILDWEB
+        </h1>
+
+        <h2>
+            Wildlife is more connected than we think.
+        </h2>
+
+        <p>
+
+            Have you ever wondered what would happen if
+            one animal suddenly disappeared from a forest?
+
+            This website is about wildlife, ecosystems,
+            the problems they face and what we can do to
+            protect them.
+
+        </p>
+
+        <button
+            class="mainButton"
+            onclick="goTo('about')">
+
+            🌿 LET'S EXPLORE
+
+        </button>
+
+    </div>
+
+    <div class="forest">
+        🌲 🌳 🌿 🌲 🌳 🌿 🌲
+    </div>
+
+</section>
+
+
+<!-- ================================
+     ABOUT
+================================ -->
+
+<section class="introSection" id="about">
+
+    <div class="smallTitle">
+        FIRST, THE BIG IDEA
+    </div>
+
+    <h2 class="title">
+        Wildlife is not just about animals.
+    </h2>
+
+    <p class="intro">
+
+        When we talk about wildlife, we usually think
+        about animals first. But there is a much bigger
+        picture.
+
+    </p>
+
+
+    <div class="introBox">
+
+        <div class="introText">
+
+            <h3>
+                🌎 Everything is connected.
+            </h3>
+
+            <p>
+
+                Think about a forest.
+
+                Plants need sunlight, water and soil.
+                Herbivores eat plants. Predators eat some
+                herbivores. Decomposers break down dead
+                plants and animals.
+
+            </p>
+
+            <p>
+
+                So if one part of the ecosystem changes,
+                other parts can be affected too.
+
+            </p>
+
+            <p>
+
+                That is why conserving wildlife does not
+                simply mean saving one animal.
+
+                It means protecting the whole system
+                around it.
+
+            </p>
+
+        </div>
+
+        <div class="introArt">
+            🌳 🦋 🐅
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     ECOSYSTEM
+================================ -->
+
+<section class="ecosystem" id="ecosystem">
+
+    <div class="smallTitle">
+        ECOSYSTEM
+    </div>
+
+    <h2 class="title">
+        So... what is an ecosystem?
+    </h2>
+
+    <p class="intro">
+
+        An ecosystem is made up of living things and
+        non-living things that interact with each other
+        in one place.
+
+    </p>
+
+
+    <div class="ecoGrid">
+
+
+        <div class="ecoCard">
+
+            <div class="ecoIcon">
+                🌱
+            </div>
+
+            <h3>
+                Plants
+            </h3>
+
+            <p>
+
+                Plants are producers. They make their own
+                food using sunlight, water and carbon dioxide.
+
+                They also become food for many animals.
+
+            </p>
+
+        </div>
+
+
+        <div class="ecoCard">
+
+            <div class="ecoIcon">
+                🐾
+            </div>
+
+            <h3>
+                Animals
+            </h3>
+
+            <p>
+
+                Animals are consumers because they get
+                energy by eating plants, other animals,
+                or both.
+
+            </p>
+
+        </div>
+
+
+        <div class="ecoCard">
+
+            <div class="ecoIcon">
+                🍄
+            </div>
+
+            <h3>
+                Decomposers
+            </h3>
+
+            <p>
+
+                Fungi and many microorganisms break down
+                dead material. This helps nutrients return
+                to the environment.
+
+            </p>
+
+        </div>
+
+
+        <div class="ecoCard">
+
+            <div class="ecoIcon">
+                ☀️
+            </div>
+
+            <h3>
+                Sunlight
+            </h3>
+
+            <p>
+
+                The Sun gives energy to plants.
+                Plants then become an energy source for
+                other organisms.
+
+            </p>
+
+        </div>
+
+
+        <div class="ecoCard">
+
+            <div class="ecoIcon">
+                💧
+            </div>
+
+            <h3>
+                Water
+            </h3>
+
+            <p>
+
+                Animals and plants both need water.
+                Rivers, ponds, lakes and rainfall can all
+                be important parts of ecosystems.
+
+            </p>
+
+        </div>
+
+
+        <div class="ecoCard">
+
+            <div class="ecoIcon">
+                🪨
+            </div>
+
+            <h3>
+                Soil
+            </h3>
+
+            <p>
+
+                Soil gives plants support and contains
+                water, air, minerals and many tiny living
+                organisms.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="foodWeb">
+
+        <h3>
+            🔗 A very simple food chain
+        </h3>
+
+        <div class="foodRow">
+
+            <div class="foodThing">
+                ☀️<br>
+                Sun
+            </div>
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="foodThing">
+                🌱<br>
+                Plant
+            </div>
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="foodThing">
+                🦌<br>
+                Deer
+            </div>
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="foodThing">
+                🐅<br>
+                Tiger
+            </div>
+
+        </div>
+
+        <p style="text-align:center;margin-top:20px;color:#68746d;">
+
+            Of course, real ecosystems are not this simple.
+            One animal can eat different things and can also
+            be food for different predators.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     WILDLIFE
+================================ -->
+
+<section class="wildlife" id="wildlife">
+
+    <div class="smallTitle">
+        SPECIES EXPLORER
+    </div>
+
+    <h2 class="title">
+        Let's meet some wildlife.
+    </h2>
+
+    <p class="intro">
+
+        Don't just look at the animal.
+        Click on it and open its little species file. 🔬
+
+    </p>
+
+
+    <div class="animalGrid">
+
+
+        <!-- TIGER -->
+
+        <div class="animalCard">
+
+            <div class="animalPicture tiger">
+                🐅
+            </div>
+
+            <div class="animalInfo">
+
+                <h3>
+                    Bengal Tiger
+                </h3>
+
+                <div class="scientific">
+                    Panthera tigris
+                </div>
+
+                <p>
+
+                    The Bengal tiger is a large predator
+                    found in parts of South Asia.
+
+                </p>
+
+                <button
+                    class="openButton"
+                    onclick="openFile('tigerFile')">
+
+                    🔬 Open species file
+
+                </button>
+
+
+                <div
+                    class="details"
+                    id="tigerFile">
+
+                    <h4>
+                        🌳 Where does it live?
+                    </h4>
+
+                    <p>
+
+                        Bengal tigers can live in forests,
+                        grasslands, wetlands and mangrove
+                        forests.
+
+                    </p>
+
+                    <h4>
+                        🍖 What does it eat?
+                    </h4>
+
+                    <p>
+
+                        It is a carnivore. Deer and wild pigs
+                        are examples of animals that can become
+                        tiger prey.
+
+                    </p>
+
+                    <h4>
+                        🔗 What is its role?
+                    </h4>
+
+                    <p>
+
+                        The tiger is a top predator in many
+                        food webs. It helps keep predator-prey
+                        relationships part of the ecosystem.
+
+                    </p>
+
+                    <h4>
+                        ⚠️ What threatens it?
+                    </h4>
+
+                    <p>
+
+                        Habitat loss, habitat fragmentation,
+                        poaching and loss of prey can affect
+                        wild tiger populations.
+
+                    </p>
+
+                    <div class="stats">
+
+                        <div class="stat">
+                            <b>Food</b>
+                            Carnivore
+                        </div>
+
+                        <div class="stat">
+                            <b>Habitat</b>
+                            Forests, grasslands and wetlands
+                        </div>
+
+                        <div class="stat">
+                            <b>Gestation</b>
+                            Around 3–4 months
+                        </div>
+
+                        <div class="stat">
+                            <b>Special feature</b>
+                            Every tiger has its own stripe pattern.
+                        </div>
+
+                    </div>
+
+                    <h4>
+                        💡 Did you know?
+                    </h4>
+
+                    <p>
+
+                        The stripes on a tiger's skin also
+                        continue underneath its fur.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DEER -->
+
+        <div class="animalCard">
+
+            <div class="animalPicture deer">
+                🦌
+            </div>
+
+            <div class="animalInfo">
+
+                <h3>
+                    Spotted Deer
+                </h3>
+
+                <div class="scientific">
+                    Axis axis
+                </div>
+
+                <p>
+
+                    The spotted deer, also called chital,
+                    is an important herbivore in many Indian
+                    forests.
+
+                </p>
+
+                <button
+                    class="openButton"
+                    onclick="openFile('deerFile')">
+
+                    🔬 Open species file
+
+                </button>
+
+
+                <div
+                    class="details"
+                    id="deerFile">
+
+                    <h4>
+                        🌳 Where does it live?
+                    </h4>
+
+                    <p>
+
+                        Chital are found in forests and open
+                        grassy areas, often near water.
+
+                    </p>
+
+                    <h4>
+                        🌿 What does it eat?
+                    </h4>
+
+                    <p>
+
+                        It mainly eats grass, leaves, flowers,
+                        fruits and other plant material.
+
+                    </p>
+
+                    <h4>
+                        🔗 What is its role?
+                    </h4>
+
+                    <p>
+
+                        It takes energy from plants and passes
+                        some of that energy to predators when
+                        it becomes their prey.
+
+                    </p>
+
+                    <h4>
+                        ⚠️ What can affect it?
+                    </h4>
+
+                    <p>
+
+                        Loss of habitat, lack of food or water,
+                        and disturbance can affect its population.
+
+                    </p>
+
+                    <div class="stats">
+
+                        <div class="stat">
+                            <b>Food</b>
+                            Herbivore
+                        </div>
+
+                        <div class="stat">
+                            <b>Special feature</b>
+                            White spots on its body
+                        </div>
+
+                        <div class="stat">
+                            <b>Movement</b>
+                            Fast runner and jumper
+                        </div>
+
+                        <div class="stat">
+                            <b>Role</b>
+                            Herbivore and prey
+                        </div>
+
+                    </div>
+
+                    <h4>
+                        💡 Did you know?
+                    </h4>
+
+                    <p>
+
+                        Chital often stay alert and use their
+                        senses to notice predators.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUTTERFLY -->
+
+        <div class="animalCard">
+
+            <div class="animalPicture butterfly">
+                🦋
+            </div>
+
+            <div class="animalInfo">
+
+                <h3>
+                    Butterfly
+                </h3>
+
+                <div class="scientific">
+                    Order: Lepidoptera
+                </div>
+
+                <p>
+
+                    Butterflies may look tiny and delicate,
+                    but they are connected to many parts of
+                    an ecosystem.
+
+                </p>
+
+                <button
+                    class="openButton"
+                    onclick="openFile('butterflyFile')">
+
+                    🔬 Open species file
+
+                </button>
+
+
+                <div
+                    class="details"
+                    id="butterflyFile">
+
+                    <h4>
+                        🌸 What does it eat?
+                    </h4>
+
+                    <p>
+
+                        Adult butterflies often drink nectar
+                        from flowers using a long tube-like
+                        mouthpart called a proboscis.
+
+                    </p>
+
+                    <h4>
+                        🌼 Why are they useful?
+                    </h4>
+
+                    <p>
+
+                        While visiting flowers, butterflies
+                        can help move pollen between flowers.
+
+                    </p>
+
+                    <h4>
+                        🔄 Life cycle
+                    </h4>
+
+                    <p>
+
+                        A butterfly goes through four main
+                        stages:
+
+                        egg → caterpillar → pupa → adult.
+
+                    </p>
+
+                    <div class="stats">
+
+                        <div class="stat">
+                            <b>Stages</b>
+                            4
+                        </div>
+
+                        <div class="stat">
+                            <b>Order</b>
+                            Lepidoptera
+                        </div>
+
+                        <div class="stat">
+                            <b>Caterpillar food</b>
+                            Mostly plants
+                        </div>
+
+                        <div class="stat">
+                            <b>Adult food</b>
+                            Mostly nectar
+                        </div>
+
+                    </div>
+
+                    <h4>
+                        💡 Did you know?
+                    </h4>
+
+                    <p>
+
+                        Butterflies have taste receptors on
+                        their feet. Yes, their feet can help
+                        them sense what they land on! 🦶🦋
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BEAR -->
+
+        <div class="animalCard">
+
+            <div class="animalPicture bear">
+                🐻
+            </div>
+
+            <div class="animalInfo">
+
+                <h3>
+                    Himalayan Brown Bear
+                </h3>
+
+                <div class="scientific">
+                    Ursus arctos
+                </div>
+
+                <p>
+
+                    This bear lives in high mountain areas
+                    of the Himalayan region.
+
+                </p>
+
+                <button
+                    class="openButton"
+                    onclick="openFile('bearFile')">
+
+                    🔬 Open species file
+
+                </button>
+
+
+                <div
+                    class="details"
+                    id="bearFile">
+
+                    <h4>
+                        🏔️ Where does it live?
+                    </h4>
+
+                    <p>
+
+                        It is associated with high mountain
+                        habitats, including alpine areas and
+                        places near the tree line.
+
+                    </p>
+
+                    <h4>
+                        🍎 What does it eat?
+                    </h4>
+
+                    <p>
+
+                        It is an omnivore, so it can eat both
+                        plant material and animal food.
+
+                    </p>
+
+                    <h4>
+                        🔗 What is its role?
+                    </h4>
+
+                    <p>
+
+                        Because it eats different kinds of food,
+                        it can be connected to several parts of
+                        the food web.
+
+                    </p>
+
+                    <h4>
+                        ⚠️ What problems can it face?
+                    </h4>
+
+                    <p>
+
+                        Habitat disturbance, changes in food
+                        availability and conflict with people
+                        can create problems.
+
+                    </p>
+
+                    <div class="stats">
+
+                        <div class="stat">
+                            <b>Food</b>
+                            Omnivore
+                        </div>
+
+                        <div class="stat">
+                            <b>Habitat</b>
+                            High mountain areas
+                        </div>
+
+                        <div class="stat">
+                            <b>Family</b>
+                            Ursidae
+                        </div>
+
+                        <div class="stat">
+                            <b>Special feature</b>
+                            Thick fur helps in cold conditions.
+                        </div>
+
+                    </div>
+
+                    <h4>
+                        💡 Did you know?
+                    </h4>
+
+                    <p>
+
+                        Brown bears have a very strong sense
+                        of smell, which helps them find food.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     FACTS
+================================ -->
+
+<section class="facts" id="facts">
+
+    <div class="smallTitle">
+        WAIT... REALLY?
+    </div>
+
+    <h2 class="title">
+        Quick facts worth remembering
+    </h2>
+
+    <p class="intro">
+
+        Here are some facts that are short enough to remember
+        but interesting enough to tell someone else. 😭
+
+    </p>
+
+
+    <div class="factGrid">
+
+
+        <div class="fact">
+
+            <div class="factNumber">
+                8
+            </div>
+
+            <h3>
+                Living bear species
+            </h3>
+
+            <p>
+
+                There are eight living species of bears,
+                including the giant panda, polar bear,
+                brown bear and sloth bear.
+
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="factNumber">
+                4
+            </div>
+
+            <h3>
+                Butterfly stages
+            </h3>
+
+            <p>
+
+                Egg, caterpillar, pupa and adult.
+                That is the complete life cycle.
+
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="factNumber">
+                3–4
+            </div>
+
+            <h3>
+                Months
+            </h3>
+
+            <p>
+
+                A tiger's pregnancy usually lasts
+                around three to four months.
+
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="factNumber">
+                3
+            </div>
+
+            <h3>
+                Simple ecosystem roles
+            </h3>
+
+            <p>
+
+                We often start with producers, consumers
+                and decomposers when learning about
+                ecosystems.
+
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="factNumber">
+                🐾</div>
+
+            <h3>
+                Every species matters
+            </h3>
+
+            <p>
+
+                Even a species that looks small or
+                unimportant can have connections with
+                other organisms.
+
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="factNumber">
+                🔗
+            </div>
+
+            <h3>
+                Food webs
+            </h3>
+
+            <p>
+
+                A food web is made when many food chains
+                are connected together.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     HIMALAYAN SECTION
+================================ -->
+
+<section class="himalaya">
+
+    <div class="mountains"></div>
+
+    <div class="himalayaBox">
+
+        <div class="smallTitle" style="color:#dfc879;">
+            A CLOSER LOOK
+        </div>
+
+        <h2>
+            🏔️ The Himalayan Ecosystem
+        </h2>
+
+        <p>
+
+            The Himalayas are not just one huge mountain
+            range with one type of environment.
+
+            As we go higher, temperature, plants and
+            living conditions change.
+
+        </p>
+
+
+        <div class="mountainFacts">
+
+            <div class="mountainFact">
+
+                <b>
+                    🌲
+                </b>
+
+                Forests
+
+            </div>
+
+
+            <div class="mountainFact">
+
+                <b>
+                    🌿
+                </b>
+
+                Alpine meadows
+
+            </div>
+
+
+            <div class="mountainFact">
+
+                <b>
+                    💧
+                </b>
+
+                Rivers and streams
+
+            </div>
+
+        </div>
+
+
+        <p style="margin-top:25px;">
+
+            Animals such as snow leopards, Himalayan bears,
+            red pandas and musk deer are connected to these
+            mountain habitats.
+
+        </p>
+
+
+        <button
+            class="mainButton"
+            onclick="mountainFact()">
+
+            🏔️ Give me a mountain fact
+
+        </button>
+
+
+        <div
+            id="mountainAnswer"
+            style="margin-top:20px;font-weight:bold;">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     THREATS
+================================ -->
+
+<section class="threats">
+
+    <div class="smallTitle">
+        THE PROBLEM
+    </div>
+
+    <h2 class="title">
+        What is putting wildlife in danger?
+    </h2>
+
+    <p class="intro">
+
+        Wildlife can face many different problems.
+        Some are caused by direct human activities,
+        while others are connected to larger environmental
+        changes.
+
+    </p>
+
+
+    <div class="threatGrid">
+
+
+        <div class="threat">
+
+            <div class="threatIcon">
+                🌳
+            </div>
+
+            <h3>
+                Habitat loss
+            </h3>
+
+            <p>
+
+                When forests, wetlands or grasslands are
+                destroyed or changed, animals can lose
+                their food, shelter and places to reproduce.
+
+            </p>
+
+        </div>
+
+
+        <div class="threat">
+
+            <div class="threatIcon">
+                🛣️
+            </div>
+
+            <h3>
+                Habitat fragmentation
+            </h3>
+
+            <p>
+
+                Roads and buildings can divide one large
+                habitat into smaller pieces. This can make
+                it harder for animals to move around.
+
+            </p>
+
+        </div>
+
+
+        <div class="threat">
+
+            <div class="threatIcon">
+                🗑️
+            </div>
+
+            <h3>
+                Pollution
+            </h3>
+
+            <p>
+
+                Plastic, chemicals and polluted water can
+                affect animals, plants and the places where
+                they live.
+
+            </p>
+
+        </div>
+
+
+        <div class="threat">
+
+            <div class="threatIcon">
+                🏹
+            </div>
+
+            <h3>
+                Illegal hunting
+            </h3>
+
+            <p>
+
+                Illegal hunting can reduce wildlife
+                populations and remove important species
+                from ecosystems.
+
+            </p>
+
+        </div>
+
+
+        <div class="threat">
+
+            <div class="threatIcon">
+                🌡️
+            </div>
+
+            <h3>
+                Climate change
+            </h3>
+
+            <p>
+
+                Changes in temperature, rainfall and seasons
+                can affect habitats and the availability
+                of food and water.
+
+            </p>
+
+        </div>
+
+
+        <div class="threat">
+
+            <div class="threatIcon">
+                👥
+            </div>
+
+            <h3>
+                Human-wildlife conflict
+            </h3>
+
+            <p>
+
+                When people and wild animals use the same
+                areas, conflicts can sometimes happen.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     CONSERVATION
+================================ -->
+
+<section class="conservation">
+
+    <div class="smallTitle">
+        SO WHAT CAN WE DO?
+    </div>
+
+    <h2 class="title">
+        Wildlife conservation
+    </h2>
+
+    <p class="intro">
+
+        Conservation means protecting wildlife and the
+        places they need to survive.
+
+        There is not just one solution.
+
+    </p>
+
+
+    <div class="conservationGrid">
+
+
+        <div class="conservationCard">
+
+            <span>🏞️</span>
+
+            <h3>
+                Protected areas
+            </h3>
+
+            <p>
+
+                National parks and wildlife sanctuaries
+                protect habitats and the species living there.
+
+            </p>
+
+        </div>
+
+
+        <div class="conservationCard">
+
+            <span>🌱</span>
+
+            <h3>
+                Restore habitats
+            </h3>
+
+            <p>
+
+                Damaged forests, wetlands and other habitats
+                can sometimes be restored.
+
+            </p>
+
+        </div>
+
+
+        <div class="conservationCard">
+
+            <span>🔬</span>
+
+            <h3>
+                Scientific research
+            </h3>
+
+            <p>
+
+                Scientists study animals and ecosystems to
+                understand what is happening and what can help.
+
+            </p>
+
+        </div>
+
+
+        <div class="conservationCard">
+
+            <span>📚</span>
+
+            <h3>
+                Education
+            </h3>
+
+            <p>
+
+                When people understand wildlife better,
+                they can make more informed choices.
+
+            </p>
+
+        </div>
+
+
+        <div class="conservationCard">
+
+            <span>🚫</span>
+
+            <h3>
+                Stop illegal hunting
+            </h3>
+
+            <p>
+
+                Laws and proper enforcement can help reduce
+                illegal hunting and wildlife trade.
+
+            </p>
+
+        </div>
+
+
+        <div class="conservationCard">
+
+            <span>🌳</span>
+
+            <h3>
+                Wildlife corridors
+            </h3>
+
+            <p>
+
+                Connected habitats can give animals safer
+                ways to move between areas.
+
+            </p>
+
+        </div>
+
+
+        <div class="conservationCard">
+
+            <span>💧</span>
+
+            <h3>
+                Protect water
+            </h3>
+
+            <p>
+
+                Clean rivers, lakes, ponds and wetlands are
+                important for many species.
+
+            </p>
+
+        </div>
+
+
+        <div class="conservationCard">
+
+            <span>♻️</span>
+
+            <h3>
+                Reduce waste
+            </h3>
+
+            <p>
+
+                Using less plastic and creating less waste
+                can reduce pressure on the environment.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     INVESTIGATION
+================================ -->
+
+<section class="investigation" id="investigation">
+
+    <div class="smallTitle">
+        TRY THIS
+    </div>
+
+    <h2 class="title">
+        🧪 What if one thing changed?
+    </h2>
+
+    <p class="intro">
+
+        Click one button and see what could happen.
+        This is only a simple model. Real ecosystems are
+        much more complicated.
+
+    </p>
+
+
+    <div class="lab">
+
+        <h3 style="text-align:center;">
+            Choose a change:
+        </h3>
+
+
+        <div class="labButtons">
+
+            <button onclick="experiment('tiger')">
+                🐅 Fewer tigers
+            </button>
+
+            <button onclick="experiment('deer')">
+                🦌 Fewer deer
+            </button>
+
+            <button onclick="experiment('plants')">
+                🌱 Fewer plants
+            </button>
+
+            <button onclick="experiment('water')">
+                💧 Polluted water
+            </button>
+
+        </div>
+
+
+        <div
+            class="result"
+            id="experimentResult">
+
+            <h3>
+                🔬 Your investigation is ready.
+            </h3>
+
+            <p>
+
+                Pick one of the changes above and see
+                how it can affect other parts of the ecosystem.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     QUIZ
+================================ -->
+
+<section class="quiz" id="quiz">
+
+    <div class="smallTitle">
+        FINAL CHECK
+    </div>
+
+    <h2 class="title">
+        🧠 One last question...
+    </h2>
+
+    <p class="intro">
+
+        Let's see if you were actually paying attention. 😭
+
+    </p>
+
+
+    <div class="quizBox">
+
+        <h3>
+
+            A forest loses a large number of plants.
+            What could happen to herbivores?
+
+        </h3>
+
+
+        <button
+            class="option"
+            onclick="answer(false)">
+
+            A. They will start making their own food.
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="answer(true)">
+
+            B. They may have less food available.
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="answer(false)">
+
+            C. They will stop needing water.
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="answer(false)">
+
+            D. The Sun will stop giving energy.
+
+        </button>
+
+
+        <div
+            class="quizResult"
+            id="quizResult">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     FINAL MESSAGE
+================================ -->
+
+<section class="final">
+
+    <div class="smallTitle" style="color:#dfc879;">
+        THE BIG IDEA
+    </div>
+
+    <h2>
+        Saving wildlife means saving the world around it too.
+    </h2>
+
+    <p>
+
+        A tiger needs prey.
+
+        Prey need plants.
+
+        Plants need sunlight, water and soil.
+
+        And all of them are part of one connected system.
+
+        That is why wildlife conservation is not only
+        about saving animals.
+
+        It is about protecting the connections that keep
+        ecosystems working.
+
+    </p>
+
+    <div class="finalQuote">
+
+        🌿 Every species has a place in the web.
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     FOOTER
+================================ -->
+
+<footer>
+
+    <h3>
+        🌿 WILDWEB
+    </h3>
+
+    <p>
+        Conservation of Wildlife + Ecosystem
+    </p>
+
+    <p>
+        Class 8 Biology Project
+    </p>
+
+</footer>
+
+
+<!-- ================================
+     JAVASCRIPT
+================================ -->
+
+<script>
+
+
+/* Smooth scrolling */
+
+function goTo(id){
+
+    document.getElementById(id).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* Open species information */
+
+function openFile(id){
+
+    let box=document.getElementById(id);
+
+    if(box.style.display==="block"){
+
+        box.style.display="none";
+
+    }else{
+
+        box.style.display="block";
+
+    }
+
+}
+
+
+/* Himalayan random facts */
+
+function mountainFact(){
+
+    let facts=[
+
+        "🏔️ As we go higher in the mountains, temperature generally becomes lower. This is one reason why different plants and animals live at different heights.",
+
+        "🐆 Snow leopards have thick fur and wide paws that help them live in cold mountain environments.",
+
+        "🌲 Himalayan forests provide food and shelter for many animals.",
+
+        "💧 Many rivers in South Asia are connected to water from the Himalayan region.",
+
+        "🌿 Alpine meadows are found at high elevations where trees become less common."
+
+    ];
+
+    let random=
+        facts[Math.floor(Math.random()*facts.length)];
+
+    document.getElementById("mountainAnswer").innerHTML=
+        random;
+
+}
+
+
+/* Ecosystem investigation */
+
+function experiment(type){
+
+    let result=
+        document.getElementById("experimentResult");
+
+
+    if(type==="tiger"){
+
+        result.innerHTML=`
+
+            <h3>🐅 Fewer tigers</h3>
+
+            <p>
+
+                If there are fewer tigers, some prey animals
+                may face less pressure from predators.
+
+            </p>
+
+            <p>
+
+                If their numbers then increase a lot,
+                they may eat more plants.
+
+            </p>
+
+            <p>
+
+                So a change in one population can affect
+                other populations too.
+
+            </p>
+
+            <b>
+                🔗 The food web is connected.
+            </b>
+
+        `;
+
+    }
+
+
+    if(type==="deer"){
+
+        result.innerHTML=`
+
+            <h3>🦌 Fewer deer</h3>
+
+            <p>
+
+                If deer numbers become much lower,
+                predators that depend on deer may have
+                less food.
+
+            </p>
+
+            <p>
+
+                At the same time, plants eaten by deer
+                may face less feeding pressure.
+
+            </p>
+
+            <b>
+                🔗 Herbivores connect plants and predators.
+            </b>
+
+        `;
+
+    }
+
+
+    if(type==="plants"){
+
+        result.innerHTML=`
+
+            <h3>🌱 Fewer plants</h3>
+
+            <p>
+
+                Plants are producers, so they are an important
+                starting point for energy in many food chains.
+
+            </p>
+
+            <p>
+
+                If there are fewer plants, herbivores may
+                have less food. This can then affect predators.
+
+            </p>
+
+            <b>
+                🔗 Producers support many other organisms.
+            </b>
+
+        `;
+
+    }
+
+
+    if(type==="water"){
+
+        result.innerHTML=`
+
+            <h3>💧 Polluted water</h3>
+
+            <p>
+
+                Pollution can affect organisms living in the
+                water and also animals that depend on that
+                water.
+
+            </p>
+
+            <p>
+
+                The effect can move through an ecosystem
+                depending on what the pollutant is.
+
+            </p>
+
+            <b>
+                🔗 Clean water is important for healthy ecosystems.
+            </b>
+
+        `;
+
+    }
+
+}
+
+
+/* Quiz */
+
+function answer(correct){
+
+    let result=
+        document.getElementById("quizResult");
+
+
+    if(correct){
+
+        result.innerHTML=
+            "✅ Correct! Plants are producers, so fewer plants can mean less food for herbivores.";
+
+        result.style.color="#3d7250";
+
+    }else{
+
+        result.innerHTML=
+            "🌱 Not quite. Think about what herbivores eat.";
+
+        result.style.color="#a85d4b";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
